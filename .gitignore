@@ -1,0 +1,19 @@
+# Dependencias
+**/node_modules/
+**/package-lock.json
+
+# Archivos de entorno
+**/.env
+**/.env.local
+
+# Carpetas de build
+**/dist
+**/build
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Uploads locales (si los hay)
+backend/uploads/
+

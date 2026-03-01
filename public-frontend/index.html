@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="dynamic-title">SOALL — Moda que te define</title>
+  <meta name="description" id="dynamic-description" content="SOALL - Tienda de moda online. Ropa dama, caballero, accesorios y calzados." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fucsia: { DEFAULT:'#E91E8C', dark:'#C4186F', light:'#FF4DAE', pale:'#FFF0F8' }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"','serif'],
+            body: ['"DM Sans"','sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111; overflow-x: hidden; margin: 0; }
+
+    :root {
+      --fucsia: #E91E8C;
+      --fucsia-dark: #C4186F;
+      --fucsia-pale: #FFF0F8;
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.05s; }
+    .d2 { transition-delay: 0.15s; }
+    .d3 { transition-delay: 0.25s; }
+    .d4 { transition-delay: 0.35s; }
+
+    /* ===== HEADER ===== */
+    #header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px; height: 60px;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(233,30,140,0.1);
+      transition: box-shadow 0.3s;
+    }
+    #header.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+    @media(min-width:768px){ #header { padding: 0 48px; height: 68px; } }
+
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: #111; text-decoration: none; letter-spacing: -0.02em; }
+    .logo span { color: var(--fucsia); }
+
+    .nav-desktop { display: none; gap: 28px; }
+    @media(min-width:768px){ .nav-desktop { display: flex; align-items: center; } }
+    .nav-link {
+      position: relative; font-weight: 500; color: #444;
+      font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:-3px; width:0; height:2px; background:var(--fucsia); transition:width 0.3s; }
+    .nav-link:hover { color: var(--fucsia); }
+    .nav-link:hover::after { width: 100%; }
+
+    .header-actions { display: flex; align-items: center; gap: 6px; }
+
+    .icon-btn {
+      position: relative; width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; border: none; background: transparent;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .icon-btn:hover { background: var(--fucsia-pale); }
+
+    #cart-count {
+      position: absolute; top: 1px; right: 1px;
+      background: var(--fucsia); color: #fff;
+      width: 15px; height: 15px; border-radius: 50%;
+      font-size: 0.58rem; font-weight: 700;
+      display: none; align-items: center; justify-content: center;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--fucsia); color: #fff; font-weight: 600;
+      font-size: 0.82rem; letter-spacing: 0.03em;
+      padding: 9px 20px; border-radius: 999px; border: none;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(233,30,140,0.28);
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--fucsia-dark); transform: translateY(-1px); box-shadow: 0 7px 24px rgba(233,30,140,0.36); }
+
+    .hamburger { display: flex; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 20px; height: 2px; background: #333; border-radius: 2px; }
+    @media(min-width:768px){ .hamburger { display: none; } }
+
+    /* ===== MOBILE MENU ===== */
+    #mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: #fff; z-index: 200;
+      flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #111; text-decoration: none; transition: color 0.2s; }
+    #mobile-menu a:hover { color: var(--fucsia); }
+    .mobile-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; font-size: 1.4rem; color: #666; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100svh;
+      padding-top: 60px;
+      background: linear-gradient(145deg, #fff 0%, var(--fucsia-pale) 55%, #fff 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    @media(min-width:768px){ #hero { padding-top: 68px; } }
+
+    .hero-blob {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(233,30,140,0.1), transparent 70%);
+    }
+
+    .hero-inner {
+      width: 100%; max-width: 1160px; margin: 0 auto;
+      padding: 48px 20px;
+      display: flex; flex-direction: column; gap: 36px; align-items: flex-start;
+    }
+    @media(min-width:768px){
+      .hero-inner { flex-direction: row; padding: 60px 48px; gap: 60px; align-items: center; }
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--fucsia-pale);
+      border: 1px solid rgba(233,30,140,0.25);
+      border-radius: 999px; padding: 5px 14px;
+      font-size: 0.68rem; font-weight: 700; color: var(--fucsia);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 900; line-height: 1.06; letter-spacing: -0.02em;
+      color: #111; margin: 0 0 16px;
+    }
+    .hero-title em { color: var(--fucsia); font-style: italic; }
+
+    .hero-sub {
+      color: #666; font-size: 1rem;
+      line-height: 1.7; margin: 0 0 28px; max-width: 400px;
+    }
+
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: #444; font-weight: 600; font-size: 0.82rem;
+      padding: 9px 20px; border-radius: 999px;
+      border: 1.5px solid #ddd; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--fucsia); color: var(--fucsia); }
+
+    .hero-social {
+      display: flex; align-items: center; gap: 14px;
+      padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.07);
+    }
+    .hero-avatars { display: flex; }
+    .hero-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid #fff; margin-left: -8px;
+    }
+    .hero-avatars .hero-avatar:first-child { margin-left: 0; }
+    .hero-stat strong { display: block; font-size: 0.88rem; font-weight: 700; color: #111; }
+    .hero-stat span { font-size: 0.7rem; color: #888; }
+    .hero-divider { width: 1px; height: 30px; background: #e5e5e5; }
+
+    /* Hero visual */
+    .hero-visual { flex: 1; position: relative; display: none; }
+    @media(min-width:768px){ .hero-visual { display: block; } }
+
+    .hero-main-card {
+      aspect-ratio: 4/5; border-radius: 28px;
+      background: linear-gradient(145deg, #ffe4f5, #ffc8e8);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-main-card::before {
+      content: 'SOALL';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; font-weight: 900; color: rgba(233,30,140,0.07);
+      position: absolute; bottom: 20px; right: 10px; letter-spacing: -0.04em;
+      user-select: none;
+    }
+    .hero-main-emoji { font-size: 7rem; line-height: 1; }
+
+    .float-card {
+      position: absolute;
+      background: #fff; border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+      animation: floatAnim 4s ease-in-out infinite;
+    }
+    .float-card:nth-of-type(2) { animation-delay: -1.5s; }
+    @keyframes floatAnim {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .fc-label { font-size: 0.62rem; color: #aaa; margin-bottom: 2px; }
+    .fc-name { font-weight: 600; font-size: 0.82rem; color: #111; }
+    .fc-price { color: var(--fucsia); font-weight: 700; font-size: 0.88rem; margin-top: 2px; }
+
+    /* ===== MARQUEE ===== */
+    .marquee-wrap {
+      overflow: hidden; background: var(--fucsia-pale);
+      border-top: 1px solid rgba(233,30,140,0.1);
+      border-bottom: 1px solid rgba(233,30,140,0.1);
+      padding: 10px 0;
+    }
+    .marquee-track {
+      display: flex; gap: 48px; white-space: nowrap;
+      animation: marqueeRun 22s linear infinite;
+    }
+    @keyframes marqueeRun { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    .marquee-item {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fucsia); flex-shrink: 0;
+    }
+
+    /* ===== SECTION LABELS ===== */
+    .section-label {
+      display: inline-block; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--fucsia); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; color: #111; margin: 0;
+      line-height: 1.1;
+    }
+
+    /* ===== BENTO GRID ===== */
+    .bento-wrap { max-width: 1160px; margin: 0 auto; padding: 72px 20px 80px; }
+    @media(min-width:768px){ .bento-wrap { padding: 80px 48px 100px; } }
+
+    .bento-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 140px;
+    }
+    @media(min-width:600px){
+      .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 160px;
+      }
+    }
+    @media(min-width:900px){
+      .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 180px;
+      }
+    }
+
+    .bento-cell {
+      border-radius: 16px; overflow: hidden;
+      position: relative; cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .bento-cell:hover { transform: scale(1.025); box-shadow: 0 14px 40px rgba(233,30,140,0.2); }
+
+    /* Large cell: full row on mobile, 2-col on desktop */
+    .bento-cell-large {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    @media(min-width:600px){
+      .bento-cell-large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+    }
+
+    .bento-bg-emoji {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(4rem, 8vw, 7rem); opacity: 0.18;
+      transition: transform 0.4s ease;
+      user-select: none; pointer-events: none;
+    }
+    .bento-cell:hover .bento-bg-emoji { transform: scale(1.1); }
+
+    .bento-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 16px 18px;
+    }
+    .bento-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 3px;
+    }
+    .bento-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2.5vw, 1.55rem);
+      color: #fff; font-weight: 700; line-height: 1.2;
+    }
+    .bento-count { font-size: 0.68rem; color: rgba(255,255,255,0.48); margin-top: 2px; }
+    .bento-pill {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px; padding: 3px 10px;
+      font-size: 0.6rem; font-weight: 600; color: #fff;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .bento-cell:hover .bento-pill { opacity: 1; }
+
+    /* ===== CATALOG SECTION ===== */
+    .catalog-wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px 80px; }
+    @media(min-width:768px){ .catalog-wrap { padding: 0 48px 100px; } }
+
+    .catalog-top {
+      display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px;
+    }
+    @media(min-width:640px){
+      .catalog-top { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    }
+
+    .filter-tabs { display: flex; gap: 5px; flex-wrap: wrap; }
+    .filter-tab {
+      padding: 7px 16px; border-radius: 999px;
+      border: 1.5px solid #e5e5e5; background: #fff;
+      font-size: 0.78rem; font-weight: 500; color: #666;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .filter-tab:hover { border-color: var(--fucsia); color: var(--fucsia); }
+    .filter-tab.active { background: var(--fucsia); border-color: var(--fucsia); color: #fff; }
+
+    /* ===== PRODUCT GRID ===== */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media(min-width:640px){ .product-grid { gap: 18px; } }
+    @media(min-width:900px){ .product-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+    @media(min-width:1100px){ .product-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .product-card {
+      background: #fff;
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid #f0f0f0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(233,30,140,0.1); }
+
+    .product-img-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+
+    .product-img-inner {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; transition: filter 0.3s;
+    }
+    .product-card:hover .product-img-inner { filter: brightness(0.97); }
+    .prd-emoji { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1; }
+    .prd-cat-label {
+      font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 600; color: #c0c0c0; transition: color 0.3s;
+    }
+    .product-card:hover .prd-cat-label { color: var(--fucsia); }
+
+    .product-badge {
+      position: absolute; top: 10px; left: 10px;
+      background: var(--fucsia); color: #fff;
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 999px;
+    }
+
+    .product-wish {
+      position: absolute; top: 10px; right: 10px;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: #fff; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .product-wish:hover { background: var(--fucsia-pale); transform: scale(1.1); }
+    .product-wish.active { background: var(--fucsia-pale); }
+    .product-wish.active svg { fill: var(--fucsia); stroke: var(--fucsia); }
+
+    .product-info { padding: 10px 12px 12px; }
+    .product-cat { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 3px; }
+    .product-name { font-weight: 600; color: #111; font-size: 0.85rem; margin-bottom: 6px; line-height: 1.3; }
+    .product-prices { display: flex; align-items: baseline; gap: 5px; margin-bottom: 10px; }
+    .product-price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--fucsia); }
+    .product-old { font-size: 0.75rem; color: #ccc; text-decoration: line-through; }
+
+    .btn-whatsapp {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      width: 100%; background: var(--fucsia); color: #fff;
+      font-weight: 600; font-size: 0.72rem; letter-spacing: 0.02em;
+      padding: 9px 10px; border-radius: 10px; border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 3px 12px rgba(233,30,140,0.22);
+    }
+    .btn-whatsapp:hover { background: var(--fucsia-dark); transform: translateY(-1px); }
+
+    /* ===== CTA BANNER ===== */
+    .cta-wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px 72px; }
+    @media(min-width:768px){ .cta-wrap { padding: 0 48px 96px; } }
+    .cta-banner {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #E91E8C 0%, #C4186F 60%, #8b0050 100%);
+      padding: 48px 28px; text-align: center;
+    }
+    @media(min-width:768px){ .cta-banner { padding: 68px 60px; } }
+    .cta-sub { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 14px; }
+    .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 4vw, 2.8rem); font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 10px; }
+    .cta-desc { color: rgba(255,255,255,0.72); font-size: 0.95rem; margin-bottom: 28px; }
+    .btn-cta-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: var(--fucsia);
+      font-weight: 700; font-size: 0.88rem; padding: 13px 26px;
+      border-radius: 999px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+    }
+    .btn-cta-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+
+ /* ===== FOOTER ===== */
+    footer { background: #111; color: #888; padding: 56px 20px 28px; }
+    @media(min-width:768px){ footer { padding: 72px 48px 36px; } }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-grid { display: grid; gap: 32px; margin-bottom: 36px; }
+    @media(min-width:640px){ .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 900; color: #fff; margin-bottom: 10px; }
+    .footer-logo span { color: var(--fucsia); }
+    .footer-desc { font-size: 0.83rem; line-height: 1.7; max-width: 250px; }
+    .footer-socials { display: flex; gap: 7px; margin-top: 14px; }
+    .social-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 700; color: #888; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .social-btn:hover { background: var(--fucsia); color: #fff; }
+    .footer-col-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { color: #888; text-decoration: none; font-size: 0.83rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fucsia); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 20px; display: flex; flex-direction: column; gap: 5px; text-align: center; font-size: 0.76rem; }
+    @media(min-width:640px){ .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; } }
+
+    /* ===== CART DRAWER ===== */
+    #cart-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+      z-index: 300; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s; backdrop-filter: blur(4px);
+    }
+    #cart-overlay.open { opacity: 1; pointer-events: all; }
+    #cart-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(380px, 100vw); background: #fff;
+      z-index: 301; transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+      display: flex; flex-direction: column;
+      box-shadow: -8px 0 48px rgba(0,0,0,0.12);
+    }
+    #cart-drawer.open { transform: translateX(0); }
+    .drawer-head { padding: 18px 22px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; }
+    .drawer-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; }
+    .drawer-sub { font-size: 0.73rem; color: #aaa; margin-top: 2px; }
+    .drawer-close { background: none; border: none; cursor: pointer; padding: 6px; border-radius: 8px; transition: background 0.2s; }
+    .drawer-close:hover { background: #f5f5f5; }
+    .drawer-body { flex: 1; overflow-y: auto; padding: 14px 22px; }
+    .drawer-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; text-align: center; gap: 8px; }
+    .drawer-empty-emoji { font-size: 2.8rem; }
+    .drawer-empty-title { font-weight: 600; color: #333; font-size: 0.95rem; }
+    .drawer-empty-desc { font-size: 0.8rem; color: #aaa; }
+    .drawer-item { display: flex; gap: 12px; align-items: center; padding: 11px 0; border-bottom: 1px solid #f5f5f5; }
+    .drawer-item-img { width: 52px; height: 64px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; }
+    .drawer-item-name { font-size: 0.83rem; font-weight: 600; color: #111; }
+    .drawer-item-price { font-size: 0.86rem; font-weight: 700; color: var(--fucsia); margin-top: 3px; }
+    .drawer-item-remove { background: none; border: none; cursor: pointer; color: #ccc; padding: 4px; border-radius: 6px; transition: color 0.2s; margin-left: auto; }
+    .drawer-item-remove:hover { color: #ff4d4d; }
+    .drawer-foot { padding: 14px 22px; border-top: 1px solid #f0f0f0; }
+    
+     /* ===== TOAST ===== */
+    #toast {
+      position: fixed; bottom: 18px; left: 50%;
+      transform: translateX(-50%) translateY(70px);
+      background: #111; color: #fff;
+      border-radius: 10px; padding: 9px 18px;
+      font-size: 0.8rem; font-weight: 500; z-index: 400;
+      transition: transform 0.3s ease; white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#" class="logo">SO<span>ALL</span></a>
+
+  <nav class="nav-desktop" id="desktop-nav">
+    <!-- Se llenará dinámicamente con JS -->
+  </nav>
+
+  <div class="header-actions">
+    <button class="icon-btn" onclick="openCart()" title="Lista de deseos">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+      <span id="cart-count">0</span>
+    </button>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#catalogo" class="btn-primary" id="header-cta" style="display:none;">Ver Catálogo</a>
+  </div>
+</header>
+
+<script>
+  function checkCTA() {
+    document.getElementById('header-cta').style.display = window.innerWidth >= 768 ? 'inline-flex' : 'none';
+  }
+  checkCTA();
+  window.addEventListener('resize', checkCTA);
+</script>
+
+<!-- Mobile menu -->
+<div id="mobile-menu">
+  <button class="mobile-close" onclick="toggleMobile()">✕</button>
+  <div id="mobile-nav-links"></div>
+  <a href="#catalogo" class="btn-primary" onclick="toggleMobile()">Ver Catálogo</a>
+</div>
+
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob" style="width:480px;height:480px;top:-80px;right:-120px;"></div>
+  <div class="hero-blob" style="width:280px;height:280px;bottom:30px;left:-60px;"></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge" id="hero-badge">✦ Nueva Colección 2026</div>
+      <h1 class="hero-title" id="hero-title">Moda que<br><em>te define</em></h1>
+      <p class="hero-sub" id="hero-subtitle">Piezas únicas pensadas para cada momento. Estilo, calidad y actitud en cada prenda.</p>
+      <div class="hero-btns">
+        <a href="#categorias" class="btn-primary" id="hero-btn1">
+          Ver Colección
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#catalogo" class="btn-outline" id="hero-btn2">Explorar todo</a>
+      </div>
+
+      <div class="hero-social">
+        <div class="hero-avatars">
+          <div class="hero-avatar" style="background:linear-gradient(135deg,#f9a,#E91E8C);"></div>
+          <div class="hero-avatar" style="background:linear-gradient(135deg,#c4b,#9a4);"></div>
+          <div class="hero-avatar" style="background:linear-gradient(135deg,#E91E8C,#8b0050);"></div>
+        </div>
+        <div class="hero-stat">
+          <strong>+2,800 clientes</strong>
+          <span>satisfechos</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <strong>⭐ 4.9</strong>
+          <span>valoración</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-main-card">
+        <span class="hero-main-emoji">👗</span>
+      </div>
+      <div class="float-card" style="bottom:24px;left:-18px;">
+        <div class="fc-label">Más vendido</div>
+        <div class="fc-name">Blazer Rosa Nude</div>
+        <div class="fc-price">$89.000</div>
+      </div>
+      <div class="float-card" style="top:28px;right:-14px;padding:8px 12px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#E91E8C,#c4186f);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="11" height="11" fill="white" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div>
+            <div class="fc-name" style="font-size:0.78rem;">Lista de deseos</div>
+            <div class="fc-label">12 prendas guardadas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee-track"></div>
+</div>
+
+
+<!-- CATEGORÍAS -->
+<section id="categorias">
+  <div class="bento-wrap">
+    <div class="reveal" style="text-align:center;margin-bottom:36px;">
+      <span class="section-label">✦ Explora</span>
+      <h2 class="section-title">Nuestras Categorías</h2>
+    </div>
+
+    <div class="bento-grid reveal" id="categories-grid"></div>
+  </div>
+</section>
+
+
+<!-- CATÁLOGO -->
+<section id="catalogo">
+  <div class="catalog-wrap">
+    <div class="catalog-top reveal">
+      <div>
+        <span class="section-label">✦ Catálogo</span>
+        <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.6rem);">Lo más nuevo</h2>
+      </div>
+      <div class="filter-tabs" id="filter-tabs"></div>
+    </div>
+
+    <div class="product-grid" id="product-grid"></div>
+  </div>
+</section>
+
+
+<!-- CTA BANNER -->
+<div class="cta-wrap reveal">
+  <div class="cta-banner">
+    <p class="cta-sub" id="cta-subtitle">¿No encontraste lo que buscas?</p>
+    <h2 class="cta-title" id="cta-title">Contáctanos directo<br>por WhatsApp</h2>
+    <p class="cta-desc" id="cta-description">Tenemos más prendas disponibles y te asesoramos con gusto.</p>
+    <a href="#" target="_blank" class="btn-cta-wa" id="cta-button">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#E91E8C"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      Ir a WhatsApp
+    </a>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">SO<span>ALL</span></div>
+        <p class="footer-desc">Moda pensada para quienes viven con intención. Cada prenda, una declaración.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" id="social-ig">IG</a>
+          <a href="#" class="social-btn" id="social-fb">FB</a>
+          <a href="#" class="social-btn" id="social-tk">TK</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Categorías</p>
+        <ul class="footer-links" id="footer-categories"></ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Contacto</p>
+        <ul class="footer-links">
+          <li><a href="#" id="footer-wa">📱 WhatsApp</a></li>
+          <li><a href="#" id="footer-email">📧 <span class="__cf_email__" data-cfemail="soft">email</span></a></li>
+          <li><a href="#">🕐 Lun–Sáb 9am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span id="footer-copyright">© 2025 SOALL. Todos los derechos reservados.</span>
+      <span id="footer-credits">Hecho por <span style="color:var(--fucsia);">Jeighost</span> para amantes de la moda</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- CART DRAWER -->
+<div id="cart-overlay" onclick="closeCart()"></div>
+<div id="cart-drawer">
+  <div class="drawer-head">
+    <div>
+      <div class="drawer-title">Mi Lista ♥</div>
+      <div class="drawer-sub" id="drawer-sub">0 productos guardados</div>
+    </div>
+    <button class="drawer-close" onclick="closeCart()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="drawer-body">
+    <div class="drawer-empty">
+      <div class="drawer-empty-emoji">🛍️</div>
+      <div class="drawer-empty-title">Tu lista está vacía</div>
+      <div class="drawer-empty-desc">Agrega productos que te gusten con el ♥</div>
+    </div>
+  </div>
+  <div class="drawer-foot" id="drawer-foot" style="display:none;">
+    <a id="drawer-wa-btn" href="#" target="_blank" class="btn-whatsapp" style="text-decoration:none;font-size:0.83rem;padding:11px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      Consultar lista por WhatsApp
+    </a>
+  </div>
+</div>
+
+<div id="toast">✦ Listo</div>
+
+<!-- JS Dinámico -->
+<script>
+  // Configuración
+  const API_URL = 'https://tu-backend.com/api'; // ← CAMBIA ESTO por la URL de tu backend
+  const WA_NUMBER = '+573012230298';
+
+  let products = [];
+  let categories = [];
+  let settings = {};
+  let wishlist = JSON.parse(localStorage.getItem('soall_wishlist')) || [];
+  let activeFilter = 'todos';
+
+  // Utilidades
+  const fmt = n => '$' + n.toLocaleString('es-CO');
+
+  // Cargar datos iniciales
+  async function loadData() {
+    try {
+      const [productsRes, categoriesRes, settingsRes] = await Promise.all([
+        fetch(`${API_URL}/products`).then(r => r.json()),
+        fetch(`${API_URL}/categories`).then(r => r.json()),
+        fetch(`${API_URL}/settings`).then(r => r.json())
+      ]);
+
+      products = productsRes;
+      categories = categoriesRes;
+      settings = settingsRes;
+
+      // Actualizar todo
+      updateSEO();
+      updateHero();
+      updateMarquee();
+      updateCategoriesGrid();
+      updateFooter();
+      updateDesktopNav();
+      updateMobileNav();
+      updateFilterTabs();
+      renderProducts();
+      updateCTA();
+      
+      observeReveal();
+    } catch (error) {
+      console.error('Error cargando datos:', error);
+      showToast('Error al cargar datos del servidor');
+    }
+  }
+
+  // SEO
+  function updateSEO() {
+    document.getElementById('dynamic-title').textContent = settings.siteTitle || 'SOALL — Moda que te define';
+    document.getElementById('dynamic-description').content = settings.metaDescription || 'SOALL - Tienda de moda online. Ropa dama, caballero, accesorios y calzados.';
+  }
+
+  // Hero
+  function updateHero() {
+    document.getElementById('hero-badge').textContent = settings.heroBadge || '✦ Nueva Colección 2026';
+    document.getElementById('hero-title').innerHTML = (settings.heroTitle || 'Moda que<br><em>te define</em>').replace(/\n/g, '<br>');
+    document.getElementById('hero-subtitle').textContent = settings.heroSubtitle || 'Piezas únicas pensadas para cada momento. Estilo, calidad y actitud en cada prenda.';
+    document.getElementById('hero-btn1').innerHTML = (settings.heroBtn1Text || 'Ver Colección') + 
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    document.getElementById('hero-btn1').href = settings.heroBtn1Link || '#categorias';
+    document.getElementById('hero-btn2').textContent = settings.heroBtn2Text || 'Explorar todo';
+    document.getElementById('hero-btn2').href = settings.heroBtn2Link || '#catalogo';
+  }
+
+  // Marquee
+  function updateMarquee() {
+    const items = settings.marqueeItems || [
+      '✦ Envíos a todo el país',
+      '✦ Nuevas llegadas cada semana',
+      '✦ Compra 100% segura',
+      '✦ Atención por WhatsApp',
+      '✦ Devoluciones fáciles'
+    ];
+    const track = document.getElementById('marquee-track');
+    track.innerHTML = items.map(item => `<span class="marquee-item">${item}</span>`).join('') + 
+                      items.map(item => `<span class="marquee-item">${item}</span>`).join('');
+  }
+
+  // Categorías Grid (Bento)
+  function updateCategoriesGrid() {
+    const grid = document.getElementById('categories-grid');
+    const activeCats = categories.filter(c => c.active);
+    
+    // Primera categoría como grande si existe
+    if (activeCats.length > 0) {
+      activeCats[0].isLarge = true;
+    }
+
+    grid.innerHTML = activeCats.map((cat, index) => `
+      <div class="bento-cell ${index === 0 ? 'bento-cell-large' : ''}" onclick="filterCategory('${cat.slug}')"
+           style="background:${cat.gradient}; min-height:${index === 0 ? '180px' : '140px'};">
+        <div class="bento-bg-emoji">${cat.emoji}</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Colección</span>
+          <span class="bento-title">${cat.name}</span>
+        </div>
+        <span class="bento-pill">Explorar →</span>
+      </div>
+    `).join('');
+  }
+
+  // Navegación desktop
+  function updateDesktopNav() {
+    const nav = document.getElementById('desktop-nav');
+    nav.innerHTML = categories.filter(c => c.active).map(cat => 
+      `<a href="#categorias" class="nav-link" onclick="filterCategory('${cat.slug}')">${cat.name}</a>`
+    ).join('');
+  }
+
+  // Navegación móvil
+  function updateMobileNav() {
+    const nav = document.getElementById('mobile-nav-links');
+    nav.innerHTML = categories.filter(c => c.active).map(cat => 
+      `<a href="#categorias" onclick="filterCategory('${cat.slug}'); toggleMobile()">${cat.name}</a>`
+    ).join('');
+  }
+
+  // Filtros de catálogo
+  function updateFilterTabs() {
+    const tabs = document.getElementById('filter-tabs');
+    tabs.innerHTML = `
+      <button class="filter-tab active" onclick="filterCategory('todos')">Todos</button>
+      ${categories.filter(c => c.active).map(cat => 
+        `<button class="filter-tab" onclick="filterCategory('${cat.slug}')">${cat.name}</button>`
+      ).join('')}
+    `;
+  }
+
+  // Productos
+  function renderProducts() {
+    const grid = document.getElementById('product-grid');
+    const list = activeFilter === 'todos' 
+      ? products.filter(p => p.active)
+      : products.filter(p => p.category?.slug === activeFilter && p.active);
+
+    if (list.length === 0) {
+      grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500">No hay productos en esta categoría</div>';
+      return;
+    }
+
+    grid.innerHTML = list.map((p, i) => {
+      const cat = p.category || { name: 'categoría', slug: '' };
+      const gradient = p.gradient || cat.gradient || 'linear-gradient(145deg,#f5f0ff,#e8deff)';
+      
+      return `
+      <div class="product-card reveal d${(i % 4) + 1}">
+        <div class="product-img-wrap">
+          ${p.image 
+            ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` 
+            : `<div class="product-img-inner" style="background:${gradient};"> 
+                <span class="prd-emoji">${p.emoji || cat.emoji || '🛍️'}</span> 
+                <span class="prd-cat-label">${cat.name}</span> 
+              </div>`
+          }
+        
+          ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+          <button class="product-wish ${wishlist.includes(p._id) ? 'active' : ''}"
+                  id="wish-${p._id}" onclick="toggleWish('${p._id}')" title="Guardar">
+            <svg width="14" height="14" viewBox="0 0 24 24"
+                 fill="${wishlist.includes(p._id) ? '#E91E8C' : 'none'}"
+                 stroke="${wishlist.includes(p._id) ? '#E91E8C' : '#888'}"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="product-info">
+          <p class="product-cat">${cat.name}</p>
+          <p class="product-name">${p.name}</p>
+          <div class="product-prices">
+            <span class="product-price">${fmt(p.price)}</span>
+            ${p.oldPrice ? `<span class="product-old">${fmt(p.oldPrice)}</span>` : ''}
+          </div>
+          <button class="btn-whatsapp" onclick="buyWA('${p._id}')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Comprar en WhatsApp
+          </button>
+        </div>
+      </div>
+    `}).join('');
+
+    observeReveal();
+  }
+    // Footer
+  function updateFooter() {
+    document.getElementById('footer-copyright').textContent = settings.footerCopyright || '© 2025 SOALL. Todos los derechos reservados.';
+    document.getElementById('footer-credits').innerHTML = settings.footerCredits || 'Hecho por <span style="color:var(--fucsia);">Jeighost</span> para amantes de la moda';
+    
+    // Redes sociales
+    document.getElementById('social-ig').href = settings.socialInstagram || '#';
+    document.getElementById('social-fb').href = settings.socialFacebook || '#';
+    document.getElementById('social-tk').href = settings.socialTikTok || '#';
+    
+    // Contacto
+    const waNumber = settings.whatsappNumber || '+573012230298';
+    document.getElementById('footer-wa').href = `https://wa.me/${waNumber.replace('+', '')}`;
+    document.getElementById('footer-wa').innerHTML = `📱 WhatsApp: ${waNumber}`;
+    document.getElementById('footer-email').innerHTML = `📧 ${settings.contactEmail || 'sofiafuentes0408@gmail.com'}`;
+    
+    // Categorías en footer
+    const footerCats = document.getElementById('footer-categories');
+    footerCats.innerHTML = categories.filter(c => c.active).map(cat => 
+      `<li><a href="#" onclick="filterCategory('${cat.slug}')">${cat.name}</a></li>`
+    ).join('');
+  }
+
+  // CTA Banner
+  function updateCTA() {
+    document.getElementById('cta-subtitle').textContent = settings.ctaSubtitle || '¿No encontraste lo que buscas?';
+    document.getElementById('cta-title').innerHTML = (settings.ctaTitle || 'Contáctanos directo<br>por WhatsApp').replace(/\n/g, '<br>');
+    document.getElementById('cta-description').textContent = settings.ctaDescription || 'Tenemos más prendas disponibles y te asesoramos con gusto.';
+    document.getElementById('cta-button').innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#E91E8C"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      ${settings.ctaButtonText || 'Ir a WhatsApp'}
+    `;
+    document.getElementById('cta-button').href = settings.ctaButtonLink || `https://wa.me/${waNumber.replace('+', '')}`;
+  }
+
+  // Funciones existentes (adaptadas)
+  function toggleWish(id) {
+    if (wishlist.includes(id)) {
+      wishlist = wishlist.filter(x => x !== id);
+      showToast('Eliminado de la lista');
+    } else {
+      wishlist.push(id);
+      showToast('✦ Agregado a tu lista');
+    }
+    localStorage.setItem('soall_wishlist', JSON.stringify(wishlist));
+    updateDrawer();
+    renderProducts();
+  }
+
+  function updateDrawer() {
+    const count = wishlist.length;
+    const el = document.getElementById('cart-count');
+    el.textContent = count;
+    el.style.display = count > 0 ? 'flex' : 'none';
+    document.getElementById('drawer-sub').textContent =
+      `${count} producto${count !== 1 ? 's' : ''} guardado${count !== 1 ? 's' : ''}`;
+
+    const body = document.getElementById('drawer-body');
+    const foot = document.getElementById('drawer-foot');
+
+    if (count === 0) {
+      body.innerHTML = `<div class="drawer-empty">
+        <div class="drawer-empty-emoji">🛍️</div>
+        <div class="drawer-empty-title">Tu lista está vacía</div>
+        <div class="drawer-empty-desc">Agrega productos con el ♥</div>
+      </div>`;
+      foot.style.display = 'none';
+      return;
+    }
+
+    foot.style.display = 'block';
+    body.innerHTML = wishlist.map(id => {
+      const p = products.find(x => x._id === id);
+      if (!p) return '';
+      const cat = p.category || {};
+      return `<div class="drawer-item">
+        <div class="drawer-item-img" style="background:${p.gradient || cat.gradient || '#f5f5f5'};overflow:hidden;">
+          ${p.image
+            ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">`
+            : `<span style="font-size:1.6rem;">${p.emoji || cat.emoji || '🛍️'}</span>`
+          }
+        </div>
+        <div style="flex:1;">
+          <div class="drawer-item-name">${p.name}</div>
+          <div class="drawer-item-price">${fmt(p.price)}</div>
+        </div>
+        <button class="drawer-item-remove" onclick="toggleWish('${p._id}')" title="Eliminar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>`;
+    }).join('');
+
+    const msgList = wishlist.map(id => {
+      const p = products.find(x => x._id === id);
+      return p ? `• ${p.name} (${fmt(p.price)})` : '';
+    }).filter(Boolean).join('\n');
+    const waNumber = settings.whatsappNumber || '+573012230298';
+    const msg = `Hola! Me interesan los siguientes productos de SOALL:\n${msgList}\n\n¿Están disponibles?`;
+    document.getElementById('drawer-wa-btn').href = `https://wa.me/${waNumber.replace('+', '')}?text=${encodeURIComponent(msg)}`;
+  }
+
+  function filterCategory(cat) {
+    activeFilter = cat;
+    document.querySelectorAll('.filter-tab').forEach(t => {
+      t.classList.toggle('active', t.textContent.toLowerCase() === cat || (cat === 'todos' && t.textContent.toLowerCase() === 'todos'));
+    });
+    document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    renderProducts();
+  }
+
+  function buyWA(id) {
+    const p = products.find(x => x._id === id);
+    const waNumber = settings.whatsappNumber || '+573012230298';
+    const msg = `Hola, me interesa el producto *${p.name}* que vi en la web. ¿Esta disponible?`;
+    window.open(`https://wa.me/${waNumber.replace('+', '')}?text=${encodeURIComponent(msg)}`, '_blank');
+    showToast('¡Abriendo WhatsApp! 💬');
+  }
+
+  function openCart() {
+    document.getElementById('cart-overlay').classList.add('open');
+    document.getElementById('cart-drawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeCart() {
+    document.getElementById('cart-overlay').classList.remove('open');
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  let _tt;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(_tt);
+    _tt = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  function toggleMobile() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  function observeReveal() {
+    const els = document.querySelectorAll('.reveal:not(.visible)');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(el => obs.observe(el));
+  }
+
+  // Scroll header
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Inicializar
+  document.addEventListener('DOMContentLoaded', () => {
+    loadData();
+    updateDrawer();
+  });
+</script>
+</body>
+</html>
