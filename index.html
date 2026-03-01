@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="dynamic-title">SOALL — Moda que te define</title>
-  <meta name="description" id="dynamic-description" content="SOALL - Tienda de moda online. Ropa dama, caballero, accesorios y calzados." />
+  <title>SOALL — Moda que te define</title>
+  <meta name="description" content="SOALL - Tienda de moda online. Ropa dama, caballero, accesorios y calzados." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -452,7 +452,7 @@
     }
     .btn-cta-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
 
- /* ===== FOOTER ===== */
+    /* ===== FOOTER ===== */
     footer { background: #111; color: #888; padding: 56px 20px 28px; }
     @media(min-width:768px){ footer { padding: 72px 48px 36px; } }
     .footer-inner { max-width: 1160px; margin: 0 auto; }
@@ -509,8 +509,8 @@
     .drawer-item-remove { background: none; border: none; cursor: pointer; color: #ccc; padding: 4px; border-radius: 6px; transition: color 0.2s; margin-left: auto; }
     .drawer-item-remove:hover { color: #ff4d4d; }
     .drawer-foot { padding: 14px 22px; border-top: 1px solid #f0f0f0; }
-    
-     /* ===== TOAST ===== */
+
+    /* ===== TOAST ===== */
     #toast {
       position: fixed; bottom: 18px; left: 50%;
       transform: translateX(-50%) translateY(70px);
@@ -528,8 +528,12 @@
 <header id="header">
   <a href="#" class="logo">SO<span>ALL</span></a>
 
-  <nav class="nav-desktop" id="desktop-nav">
-    <!-- Se llenará dinámicamente con JS -->
+  <nav class="nav-desktop">
+    <a href="#categorias" class="nav-link">Dama</a>
+    <a href="#categorias" class="nav-link">Caballero</a>
+    <a href="#categorias" class="nav-link">Accesorios</a>
+    <a href="#categorias" class="nav-link">Calzados</a>
+    <a href="#categorias" class="nav-link">Más</a>
   </nav>
 
   <div class="header-actions">
@@ -557,7 +561,19 @@
 <!-- Mobile menu -->
 <div id="mobile-menu">
   <button class="mobile-close" onclick="toggleMobile()">✕</button>
-  <div id="mobile-nav-links"></div>
+  <a href="#categorias" onclick="toggleMobile()">Dama</a>
+  <a href="#categorias" onclick="toggleMobile()">Caballero</a>
+  <a href="#categorias" onclick="toggleMobile()">Accesorios</a>
+  <a href="#categorias" onclick="toggleMobile()">Calzados</a>
+  <a href="#categorias" onclick="toggleMobile()">Curvy</a>
+  <a href="#categorias" onclick="toggleMobile()">Niña</a>
+  <a href="#categorias" onclick="toggleMobile()">Niño</a>
+  <a href="#categorias" onclick="toggleMobile()">Maquillaje</a>
+  <a href="#categorias" onclick="toggleMobile()">Útiles</a>
+  <a href="#categorias" onclick="toggleMobile()">Hogar</a>
+  <a href="#categorias" onclick="toggleMobile()">Ropa interior</a>
+  <a href="#categorias" onclick="toggleMobile()">Bebé</a>
+  <a href="#categorias" onclick="toggleMobile()">Deportivo</a>
   <a href="#catalogo" class="btn-primary" onclick="toggleMobile()">Ver Catálogo</a>
 </div>
 
@@ -569,15 +585,15 @@
 
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-badge" id="hero-badge">✦ Nueva Colección 2026</div>
-      <h1 class="hero-title" id="hero-title">Moda que<br><em>te define</em></h1>
-      <p class="hero-sub" id="hero-subtitle">Piezas únicas pensadas para cada momento. Estilo, calidad y actitud en cada prenda.</p>
+      <div class="hero-badge">✦ Nueva Colección 2026</div>
+      <h1 class="hero-title">Moda que<br><em>te define</em></h1>
+      <p class="hero-sub">Piezas únicas pensadas para cada momento. Estilo, calidad y actitud en cada prenda.</p>
       <div class="hero-btns">
-        <a href="#categorias" class="btn-primary" id="hero-btn1">
+        <a href="#categorias" class="btn-primary">
           Ver Colección
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#catalogo" class="btn-outline" id="hero-btn2">Explorar todo</a>
+        <a href="#catalogo" class="btn-outline">Explorar todo</a>
       </div>
 
       <div class="hero-social">
@@ -622,9 +638,21 @@
   </div>
 </section>
 
+
 <!-- MARQUEE -->
 <div class="marquee-wrap">
-  <div class="marquee-track" id="marquee-track"></div>
+  <div class="marquee-track">
+    <span class="marquee-item"><span>✦</span> Envíos a todo el país</span>
+    <span class="marquee-item"><span>✦</span> Nuevas llegadas cada semana</span>
+    <span class="marquee-item"><span>✦</span> Compra 100% segura</span>
+    <span class="marquee-item"><span>✦</span> Atención por WhatsApp</span>
+    <span class="marquee-item"><span>✦</span> Devoluciones fáciles</span>
+    <span class="marquee-item"><span>✦</span> Envíos a todo el país</span>
+    <span class="marquee-item"><span>✦</span> Nuevas llegadas cada semana</span>
+    <span class="marquee-item"><span>✦</span> Compra 100% segura</span>
+    <span class="marquee-item"><span>✦</span> Atención por WhatsApp</span>
+    <span class="marquee-item"><span>✦</span> Devoluciones fáciles</span>
+  </div>
 </div>
 
 
@@ -636,7 +664,152 @@
       <h2 class="section-title">Nuestras Categorías</h2>
     </div>
 
-    <div class="bento-grid reveal" id="categories-grid"></div>
+    <div class="bento-grid reveal">
+
+      <!-- Dama — large -->
+      <div class="bento-cell bento-cell-large" onclick="filterCategory('dama')"
+           style="background:linear-gradient(145deg,#3a1535,#7a2060,#c4186f); min-height:145px;">
+        <div class="bento-bg-emoji">👗</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Colección</span>
+          <span class="bento-title">Ropa Dama</span>
+        </div>
+        <span class="bento-pill">Explorar →</span>
+      </div>
+
+      <!-- Caballero -->
+      <div class="bento-cell" onclick="filterCategory('caballero')"
+           style="background:linear-gradient(145deg,#131b2e,#1e2d50); min-height:140px;">
+        <div class="bento-bg-emoji">👔</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Colección</span>
+          <span class="bento-title">Caballero</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Accesorios -->
+      <div class="bento-cell" onclick="filterCategory('accesorios')"
+           style="background:linear-gradient(145deg,#2a1040,#6b2090); min-height:140px;">
+        <div class="bento-bg-emoji">👜</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Accesorios</span>
+          <span class="bento-title">Complementos</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Calzados -->
+      <div class="bento-cell" onclick="filterCategory('calzados')"
+           style="background:linear-gradient(145deg,#112820,#1d4a34); min-height:140px;">
+        <div class="bento-bg-emoji">👠</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Calzados</span>
+          <span class="bento-title">Zapatos y Más</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Curvy -->
+      <div class="bento-cell" onclick="filterCategory('curvy')"
+           style="background:linear-gradient(145deg,#4a1535,#9e3070); min-height:140px;">
+        <div class="bento-bg-emoji">✨</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Tallas inclusivas</span>
+          <span class="bento-title">Ropa Curvy</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Niña -->
+      <div class="bento-cell" onclick="filterCategory('niña')"
+           style="background:linear-gradient(145deg,#3b0a4a,#e040a0); min-height:140px;">
+        <div class="bento-bg-emoji">🎀</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Infantil</span>
+          <span class="bento-title">Ropa Niña</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Niño -->
+      <div class="bento-cell" onclick="filterCategory('niño')"
+           style="background:linear-gradient(145deg,#0a1a3a,#1a4080); min-height:140px;">
+        <div class="bento-bg-emoji">⚽</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Infantil</span>
+          <span class="bento-title">Ropa Niño</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Maquillaje -->
+      <div class="bento-cell" onclick="filterCategory('maquillaje')"
+           style="background:linear-gradient(145deg,#3a0a20,#a0204a); min-height:140px;">
+        <div class="bento-bg-emoji">💄</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Belleza</span>
+          <span class="bento-title">Maquillaje</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Útiles escolares -->
+      <div class="bento-cell" onclick="filterCategory('utiles')"
+           style="background:linear-gradient(145deg,#1a2a10,#3a6020); min-height:140px;">
+        <div class="bento-bg-emoji">📚</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Educación</span>
+          <span class="bento-title">Útiles Escolares</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Hogar -->
+      <div class="bento-cell" onclick="filterCategory('hogar')"
+           style="background:linear-gradient(145deg,#2a1a0a,#704020); min-height:140px;">
+        <div class="bento-bg-emoji">🏠</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Para tu espacio</span>
+          <span class="bento-title">Mejoras del Hogar</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Ropa interior y pijamas -->
+      <div class="bento-cell" onclick="filterCategory('interior')"
+           style="background:linear-gradient(145deg,#3a0a30,#8a1060); min-height:140px;">
+        <div class="bento-bg-emoji">🌙</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Comodidad</span>
+          <span class="bento-title">Interior & Pijamas</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Bebé y maternidad -->
+      <div class="bento-cell" onclick="filterCategory('bebe')"
+           style="background:linear-gradient(145deg,#0a2a3a,#1a6080); min-height:140px;">
+        <div class="bento-bg-emoji">🍼</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Para los más chicos</span>
+          <span class="bento-title">Bebé & Maternidad</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+      <!-- Deportivo -->
+      <div class="bento-cell" onclick="filterCategory('deportivo')"
+           style="background:linear-gradient(145deg,#0a1a2a,#1a3a5a); min-height:140px;">
+        <div class="bento-bg-emoji">🏋️</div>
+        <div class="bento-overlay">
+          <span class="bento-label">Actividad física</span>
+          <span class="bento-title">Deportivo</span>
+        </div>
+        <span class="bento-pill">Ver →</span>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -649,7 +822,22 @@
         <span class="section-label">✦ Catálogo</span>
         <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.6rem);">Lo más nuevo</h2>
       </div>
-      <div class="filter-tabs" id="filter-tabs"></div>
+      <div class="filter-tabs" id="filter-tabs">
+        <button class="filter-tab active" onclick="filterCategory('todos')">Todos</button>
+        <button class="filter-tab" onclick="filterCategory('dama')">Dama</button>
+        <button class="filter-tab" onclick="filterCategory('caballero')">Caballero</button>
+        <button class="filter-tab" onclick="filterCategory('accesorios')">Accesorios</button>
+        <button class="filter-tab" onclick="filterCategory('calzados')">Calzados</button>
+        <button class="filter-tab" onclick="filterCategory('curvy')">Curvy</button>
+        <button class="filter-tab" onclick="filterCategory('niña')">Niña</button>
+        <button class="filter-tab" onclick="filterCategory('niño')">Niño</button>
+        <button class="filter-tab" onclick="filterCategory('maquillaje')">Maquillaje</button>
+        <button class="filter-tab" onclick="filterCategory('utiles')">Útiles Escolares</button>
+        <button class="filter-tab" onclick="filterCategory('hogar')">Hogar</button>
+        <button class="filter-tab" onclick="filterCategory('interior')">Interior & Pijamas</button>
+        <button class="filter-tab" onclick="filterCategory('bebe')">Bebé & Maternidad</button>
+        <button class="filter-tab" onclick="filterCategory('deportivo')">Deportivo</button>
+      </div>
     </div>
 
     <div class="product-grid" id="product-grid"></div>
@@ -660,10 +848,10 @@
 <!-- CTA BANNER -->
 <div class="cta-wrap reveal">
   <div class="cta-banner">
-    <p class="cta-sub" id="cta-subtitle">¿No encontraste lo que buscas?</p>
-    <h2 class="cta-title" id="cta-title">Contáctanos directo<br>por WhatsApp</h2>
-    <p class="cta-desc" id="cta-description">Tenemos más prendas disponibles y te asesoramos con gusto.</p>
-    <a href="#" target="_blank" class="btn-cta-wa" id="cta-button">
+    <p class="cta-sub">¿No encontraste lo que buscas?</p>
+    <h2 class="cta-title">Contáctanos directo<br>por WhatsApp</h2>
+    <p class="cta-desc">Tenemos más prendas disponibles y te asesoramos con gusto.</p>
+    <a href="https://wa.me/+573012230298?text=Hola!%20Quisiera%20ver%20el%20catálogo%20completo%20de%20SOALL." target="_blank" class="btn-cta-wa">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="#E91E8C"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
       Ir a WhatsApp
     </a>
@@ -679,27 +867,40 @@
         <div class="footer-logo">SO<span>ALL</span></div>
         <p class="footer-desc">Moda pensada para quienes viven con intención. Cada prenda, una declaración.</p>
         <div class="footer-socials">
-          <a href="#" class="social-btn" id="social-ig">IG</a>
-          <a href="#" class="social-btn" id="social-fb">FB</a>
-          <a href="#" class="social-btn" id="social-tk">TK</a>
+          <a href="#" class="social-btn">IG</a>
+          <a href="#" class="social-btn">FB</a>
+          <a href="#" class="social-btn">TK</a>
         </div>
       </div>
       <div>
         <p class="footer-col-title">Categorías</p>
-        <ul class="footer-links" id="footer-categories"></ul>
+        <ul class="footer-links">
+          <li><a href="#">Ropa Dama</a></li>
+          <li><a href="#">Ropa Caballero</a></li>
+          <li><a href="#">Accesorios</a></li>
+          <li><a href="#">Calzados</a></li>
+          <li><a href="#">Ropa Curvy</a></li>
+          <li><a href="#">Niña & Niño</a></li>
+          <li><a href="#">Maquillaje</a></li>
+          <li><a href="#">Útiles Escolares</a></li>
+          <li><a href="#">Hogar</a></li>
+          <li><a href="#">Interior & Pijamas</a></li>
+          <li><a href="#">Bebé & Maternidad</a></li>
+          <li><a href="#">Deportivo</a></li>
+        </ul>
       </div>
       <div>
         <p class="footer-col-title">Contacto</p>
         <ul class="footer-links">
-          <li><a href="#" id="footer-wa">📱 WhatsApp</a></li>
-          <li><a href="#" id="footer-email">📧 <span class="__cf_email__" data-cfemail="soft">email</span></a></li>
+          <li><a href="#">📱 WhatsApp: +573012230298</a></li>
+          <li><a href="#">📧 <span class="__cf_email__" data-cfemail="2d5e424b444c4b58484359485e1d191d156d4a404c4441034e4240">sofiafuentes0408@gmail.com</span></a></li>
           <li><a href="#">🕐 Lun–Sáb 9am–6pm</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span id="footer-copyright">© 2025 SOALL. Todos los derechos reservados.</span>
-      <span id="footer-credits">Hecho por <span style="color:var(--fucsia);">Jeighost</span> para amantes de la moda</span>
+      <span>© 2025 SOALL. Todos los derechos reservados.</span>
+      <span>Hecho por <span style="color:var(--fucsia);">Jeighost</span> para amantes de la moda</span>
     </div>
   </div>
 </footer>
@@ -734,226 +935,199 @@
 
 <div id="toast">✦ Listo</div>
 
-<!-- JS Dinámico -->
-<script>
-  // Configuración
-  const API_URL = 'https://soall.onrender.com/api'; // ← CAMBIA ESTO por la URL de tu backend
-  const WA_NUMBER = '+573012230298';
 
-  let products = [];
-  let categories = [];
-  let settings = {};
-  let wishlist = JSON.parse(localStorage.getItem('soall_wishlist')) || [];
+<!-- JS -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const WA_NUMBER = '+573012230298'; // ← Cambia por tu número con código de país
+
+  const products = [
+     /* DAMAS */
+     
+    { id:1,  name:'Vestido romantico',    category:'dama',       price:75000,  oldPrice:110000, badge:'Nuevo', emoji:'👗', img:'imagenes/vestido-romantico.jpg', grad:'linear-gradient(145deg,#ffe4f5,#ffd0eb)' },
+    
+    { id:2,  name:'Vestido mini de unicolor',       category:'dama',       price:61000,  oldPrice:75000,   badge:'Nuevo',       emoji:'👗',img:'imagenes/vestido-mini-de-unicolor.jpg', grad:'linear-gradient(145deg,#f8eaff,#eddbff)' },
+    
+    { id:3,  name:'Vestido de satén plisado',     category:'dama',       price:68000, oldPrice:80000, badge:'Oferta',   emoji:'👚', img:'imagenes/vestido-de-saten-plisado.jpg', grad:'linear-gradient(145deg,#fff0fb,#ffddf4)' },
+    
+    { id:4,  name:'Sweetina Falda negra con cintura superpuesta y dobladillo acampanado',  category:'dama',       price:84000,  oldPrice:null,   badge:null,       emoji:'👕', img:'imagenes/sweetina-falda-negra.jpg', grad:'linear-gradient(145deg,#fff5fc,#ffe8f8)' },
+    
+     /* caballero */
+     
+    { id:5,  name:'Manfinity Homme Jeans casuales versátiles rectos y holgados para hombre con bolsillos',     category:'caballero',  price:145000,  oldPrice:null,   badge:'Nuevo',    emoji:'👔', img:'imagenes/pantalon-manfinity.jpg',grad:'linear-gradient(145deg,#e8f0ff,#d6e4ff)' },
+    
+    { id:6,  name:'Manfinity CasualCool Camisa polo de manga corta casual y versátil para hombres con estampado de corazón',       category:'caballero',  price:72000,  oldPrice:85000,  badge:null,       emoji:'👖', img:'imagenes/manfinity-casualcool.jpg', grad:'linear-gradient(145deg,#edf0f8,#dde3f5)' },
+    
+    { id:7,  name:'Manfinity Homme Camisa Polo De Punto Acanalado Sólido Para Hombres',         category:'caballero',  price:64000,  oldPrice:null,   badge:null,       emoji:'👕', img:'imagenes/homme-camisa-polo.jpg', grad:'linear-gradient(145deg,#e8f5f0,#d4ede5)' },
+    
+    { id:8,  name:'Manfinity EMRG Shorts vaqueros informales, sueltos y con bolsillos para hombre',    category:'caballero',  price:113000,  oldPrice:150000, badge:'Oferta',   emoji:'🧥', img:'imagenes/emrg-shorts.jpg', grad:'linear-gradient(145deg,#eaedff,#d8deff)' },
+    
+     /* accesorios */
+     
+    { id:9,  name:'6 piezas/Juego de pendientes de presión con incrustación de circonio para mujeres, perfectos para citas, fiestas, uso diario y trayectos',     category:'accesorios', price:8000,  oldPrice:null,   badge:'Exclusivo',emoji:'👜', img:'imagenes/6-piezas.jpg',grad:'linear-gradient(145deg,#fff5e8,#ffe9d4)' },
+    
+    { id:10, name:'1 pieza Brazalete de flor de esmalte de aleación de hierro de doble cabeza, diseño minimalista y elegante, adecuado como regalo del Día de la Madre, para fiestas y uso diario', category:'accesorios', price:16000,  oldPrice:null,   badge:null,       emoji:'🔗', img:'imagenes/brazalete-flor.jpg', grad:'linear-gradient(145deg,#f5f0e8,#ede5d5)' },
+    
+    { id:11, name:'1 pieza Pulsera de cuerda trenzada con decoración de corona de acero inoxidable de lujo, adecuada para uso diario, puede ser un regalo para novio, amigo, fiesta de cumpleaños',    category:'accesorios', price:28000,  oldPrice:35000,  badge:null,       emoji:'📿', img:'imagenes/pulsera-cuerda.jpg', grad:'linear-gradient(145deg,#fff0f8,#ffe0f2)' },
+    
+    { id:12, name:'Conjunto de 7 Pulseras hechas a mano de estilo bohemio con abalorios, mariposas y borlas, perfectas para usar en días festivos y diariamente para mujeres',      category:'accesorios', price:10000,  oldPrice:null,   badge:'Nuevo',    emoji:'🎩', img:'imagenes/7-pulseras.jpg',grad:'linear-gradient(145deg,#f2f2f2,#e8e8e8)' },
+  
+   /* CALZADOS */  
+   
+    { id:13, name:'Sandalias de tacón alto de color champán de moda para mujer con puntera cuadrada, diseño transparente y adornos de pedrería, adecuadas para fiestas y ocasiones especiales',      category:'calzados',   price:85000, oldPrice:130000, badge:'Nuevo',    emoji:'👠', img:'imagenes/sandalias-tacon.jpg', grad:'linear-gradient(145deg,#fff0f8,#ffd8ee)' },
+    
+    { id:14, name:'Nuevas sandalias planas con lazo y perla para mujer de talla grande, cómodas y minimalistas, de punta redonda, de moda casual, de suela abierta para el verano y la playa',       category:'calzados',   price:45000,  oldPrice:null,   badge:null,       emoji:'👟', img:'imagenes/sandalias-planas-lazos.jpg', grad:'linear-gradient(145deg,#eef6ff,#d8ecff)' },
+    
+    { id:15, name:'Sandalias planas negras con decoración floral de cuentas, suaves, amigables con la piel, ligeras, transpirables y elegantes para mujer. Sandalias de playa de estilo boho brillante y lindo para el verano',           category:'calzados',   price:50000,  oldPrice:null,   badge:null,       emoji:'🥿', img:'imagenes/sandalias-planas-negras.jpg', grad:'linear-gradient(145deg,#fff5ea,#ffe8cc)' },
+    
+    { id:16, name:'Zapatillas casuales transpirables para hombres, zapatillas deportivas ligeras y antideslizantes, versátiles, nueva llegada 2026, malla resistente a los olores',           category:'calzados',   price:105000, oldPrice:null, badge:'Oferta',   emoji:'👢', img:'imagenes/zapatillas-casuales-hombres.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* niña */
+     
+    { id:17, name:'Camiseta de manga corta, cuello redondo, estilo minimalista casual para niña, con estampado de chica de dibujos animados, color rosa brillante, con los nombres de las superestrellas K-pop Rumi, Mira y Zoey',           category:'niña',   price:20000, oldPrice:null, badge:'Oferta',   emoji:'🎀', img:'imagenes/camiseta-manga-corta-niña.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:18, name:'Jeans casuales azules desgastados de ajuste holgado para niñas, pantalones vaqueros casuales tipo vagabundo para niñas para primavera y verano, para vacaciones',           category:'niña',   price:80000, oldPrice:null, badge:'Oferta',   emoji:'🎀', img:'imagenes/jeans-casuales-niña.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:19, name:'SHEIN Set de 3 camisetas de manga corta y cuello redondo casuales y versátiles para niñas jóvenes, que presentan diseños bohemios florales lindos, rayas suaves en tonos pastel y diseños de lazos 3D, aptas para primavera/verano, hogar, vacaciones y vuelta al colegio',           category:'niña',   price:55000, oldPrice:null, badge:'Oferta',   emoji:'🎀', img:'imagenes/set-de-3camisetas-niña.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:20, name:'SHEIN Vintaside Kids Conjunto de top de tirantes y pantalones cortos para niña pequeña con estampado de cerezas y cuadros rosas y blancos, outfit de verano transpirable y cómodo',           category:'niña',   price:35000, oldPrice:null, badge:'Nuevo',   emoji:'🎀', img:'imagenes/vintaside-kids.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* NIÑO */
+     
+    { id:21, name:'SHEIN Conjunto de Top de manga corta deportiva y pantalones cortos para niño preadolescente',           category:'niño',   price:45000, oldPrice:null, badge:'Oferta',   emoji:'⚽', img:'imagenes/conjunto-top-niño.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:22, name:'SHEIN 1 pieza Pantalón corto con cordón en la cintura y diseño gráfico sencillo para niño preadolescente, para la escuela y uso primaveral',           category:'niño',   price:40000, oldPrice:null, badge:'Nuevo',   emoji:'⚽', img:'imagenes/pantalon-corto-niño.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:23, name:'SHEIN Camiseta de cuello redondo de manga corta con estampado de teñido anudado, estilo deportivo y letra inglesa, estilo minimalista y de otoño Y2K hip hop, adecuada para niños preadolescentes en verano',           category:'niño',   price:30000, oldPrice:null, badge:'Oferta',   emoji:'⚽', img:'imagenes/camiseta-cuello-niño.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:24, name:'Camiseta de manga corta holgada y cómoda con cuello redondo, estilo deportivo, bloques de color, letra inglesa, número 23, estilo clásico de moda, minimalista informal para niño preadolescente',           category:'niño',   price:30000, oldPrice:null, badge:'Oferta',   emoji:'⚽', img:'imagenes/camiseta-manga-niño.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* Maquillaje */
+     
+    { id:25, name:'SHEGLAM Rubor LíQuido Color Bloom-Rubor LíQuido Petal Talk Rubor LíQuido Resistente Al Agua Larga DuracióN Alta PigmentacióN No Se Desvanece Brillo Natural Duradero Maquillaje Facial Ligero Navidad Rubor Rosa Intenso Rare Colorete Marca Belleza Maquillaje  CosméTica Para Mujeres NiñAs Perfecto Para Invierno Primavera Ideal Para Y2K Elegante Moda Adecuado Para CumpleañOs San ValentíN Regalo Fiesta Listo Mejor Color',           category:'maquillaje',   price:25000, oldPrice:null, badge:null,   emoji:'💄', img:'imagenes/maquillaje1.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+      { id:26, name:'SHEGLAM Glass Glow Colorete en barra-Pink Lemonade rare colorete Marca Belleza Maquillaje Maquullaje Cosmética para Mujeres Niñas Perfecto para Invierno Primavera Ideal para Y2K Elegante Moda Adecuado para Cumpleaños San Valentín Regalo Fiesta Listo Mejor Color',           category:'maquillaje',   price:26000, oldPrice:null, badge:null,   emoji:'💄', img:'imagenes/maquillaje2.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+      
+    { id:27, name:'SHEGLAM Delineador De Ojos Resistente Al Agua Eye Affinity, Delineador De Ojos Mate Resistente Al Sudor, Ultra, No Se Mancha, Delineador De Ojos Negro De Larga DuracióN, Maquillaje De Ojos Profesional, , Navidad, Delineador De Ojos De Invierno Kohl Kajal Henna Marca Belleza Maquillaje Maquullaje CosméTica Para Mujeres NiñAs Perfecto Para Invierno Primavera Ideal Para Y2K Elegante Moda Adecuado Para CumpleañOs San ValentíN Regalo Fiesta Listo Mejor Color',           category:'maquillaje',   price:17000, oldPrice:null, badge:null,   emoji:'💄', img:'imagenes/maquillaje3.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:28, name:'SHEGLAM Poof! Gone Corrector de cobertura total Marca Belleza Maquillaje Maquullaje Cosmética para Mujeres Niñas Perfecto para Invierno Primavera Ideal para Y2K Elegante Moda Adecuado para Cumpleaños San Valentín Regalo Fiesta Listo Mejor Color',           category:'maquillaje',   price:22000, oldPrice:null, badge:null,   emoji:'💄', img:'imagenes/maquillaje4.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* UTILES */
+     
+    { id:29, name:'6-15 piezas Bolígrafos de carbono neutros estándar europeos para oficina y firma, punta de bala de 0,5 mm, rojo, azul, negro, artículos de papelería para estudiantes',           category:'utiles',   price:10000, oldPrice:null, badge:null,   emoji:'📚', img:'imagenes/util1.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:30, name:'Set de 6 piezas o 1 pieza [Color aleatorio] Cinta correctora con impresión de letras, colores mixtos, cinta de corrección portátil, adecuada para estudiantes y oficina',           category:'utiles',   price:17000, oldPrice:null, badge:null,   emoji:'📚', img:'imagenes/util2.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:31, name:'Set de 3 bolígrafos de colores con forma de aguja de estilo Kawaii - Resaltadores, bolígrafos mecánicos y marcadores con forma de jeringa para oficina, escuela y útiles escolares, vuelta al colegio',           category:'utiles',   price:10000, oldPrice:null, badge:null,   emoji:'📚', img:'imagenes/util3.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:32, name:'Nueva mochila con estampado de dibujos animados lindos, mochila escolar, mochila de viaje',           category:'utiles',   price:70000, oldPrice:null, badge:null,   emoji:'📚', img:'imagenes/util4.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* HOGAR */
+     
+    { id:33, name:'Awaoko 6 piezas Contenedores de almacenamiento de alimentos de cocina de 700ML/24oz, cajas de almacenamiento de alimentos para refrigerador con tapas reutilizables para preparación de comidas, para carne, frutas y verduras, lonchera, bento, contenedores para entrega de alimentos, artículos de cocina, accesorios de cocina, utensilios de cocina',           category:'hogar',   price:50000, oldPrice:null, badge:null,   emoji:'🏠', img:'imagenes/hogar1.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:34, name:'45 bolsas de almacenamiento de alimentos resellables (10 grandes + 15 medianas + 20 pequeñas), bolsas congeladoras gruesas, aptas para microondas, de color azul, para una conservación y organización de alimentos duradera, bolsas con cierre de cremallera de PE transparente, adecuadas para la separación de alimentos en la cocina, el almacenamiento de aperitivos, la clasificación de frutas y verduras, garantizando la frescura, bolsas esenciales para la conservación de alimentos en el hogar',           category:'hogar',   price:15000, oldPrice:null, badge:null,   emoji:'🏠', img:'imagenes/hogar2.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:35, name:'Juego de 6 protectores de estufa de gas lavables, resistentes al aceite y al calor, cubierta para la parte superior de la estufa de gas, artículos de cocina',           category:'hogar',   price:20000, oldPrice:null, badge:null,   emoji:'🏠', img:'imagenes/hogar3.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:36, name:'30 piezas de mini clips de sellado portátiles para el hogar, mantienen los alimentos frescos y evitan el deterioro, muy adecuados para el almacenamiento de aperitivos, sellado con un solo clic, clips de sellado de colores caramelo pequeños y prácticos, resistentes a la humedad y al polvo, esenciales para viajes y dormitorios, también adecuados para el almacenamiento de la cocina del hogar, reutilizables',           category:'hogar',   price:10000, oldPrice:null, badge:null,   emoji:'🏠', img:'imagenes/hogar4.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* CURVY */
+     
+    { id:37, name:'Elenzga Vestido camisero de verano de talla grande para mujer, de unicolor, informal/de oficina, con un solo abotonamiento delantero, sin mangas y falda larga fruncida',           category:'curvy',   price:110000, oldPrice:null, badge:null,   emoji:'✨', img:'imagenes/curvy1.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+
+    { id:38, name:'SHEIN ICON Jeans de mezclilla gris rasgados, sin estiramiento, de estilo casual y de vacaciones para mujer de talla grande',           category:'curvy',   price:125000, oldPrice:null, badge:null,   emoji:'✨', img:'imagenes/curvy2.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:39, name:'SHEIN EZwear Camiseta corta de bloques de color de talla grande con cuello de contraste, verano',           category:'curvy',   price:45000, oldPrice:null, badge:null,   emoji:'✨', img:'imagenes/curvy3.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:40, name:'Firerie Camiseta y top sin espalda con cuello plisado y drapeado, con perlas y malla, cómoda, casual, elegante, versátil para vacaciones, conciertos y festivales de música, talla grande, primavera/verano',           category:'curvy',   price:35000, oldPrice:null, badge:null,   emoji:'✨', img:'imagenes/curvy4.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* INTERIOR */
+     
+    { id:41, name:'Conjunto de pijama para mujer, elegante pijama a rayas con cuello impreso - top de manga corta con cuello de botones y pantalones, suave satén lavable a máquina, se puede usar como ropa exterior',           category:'interior',   price:50000, oldPrice:null, badge:null,   emoji:'🌙', img:'imagenes/interior1.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:42, name:'SilkySpell Conjunto de pijama con lazo en la cintura de encaje de contraste',           category:'interior',   price:33000, oldPrice:null, badge:null,   emoji:'🌙', img:'imagenes/interior2.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:43, name:'paquete de 5 bragas de mujer con diseño de letra, cintura baja, sin costuras, de 100% algodón en multicolor',           category:'interior',   price:38000, oldPrice:null, badge:null,   emoji:'🌙', img:'imagenes/interior3.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:44, name:'MidnightGlam Tanga sexy con diseño calado brillante para mujer',           category:'interior',   price:14000, oldPrice:null, badge:null,   emoji:'🌙', img:'imagenes/interior4.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* BEBE */
+     
+    { id:46, name:'Set de 4 piezas de pelele de manga corta con estampado de dibujos animados para bebé niña recién nacida',           category:'bebe',   price:61000, oldPrice:null, badge:null,   emoji:'🍼', img:'imagenes/bebe1.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:47, name:'Conjunto de 3 piezas para bebé niño: body de manga corta con cuello redondo y estampado de oso marrón, con broche en la entrepierna y cintura elástica; pantalones cortos con bordado de oso marrón; y gorro con forma de oso adorable. Conjunto casual adecuado para jugar al aire libre o usar cómodamente en casa, versátil para el verano.',           category:'bebe',   price:43000, oldPrice:null, badge:null,   emoji:'🍼', img:'imagenes/bebe2.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:48, name:'Moonlight&Mama Conjunto de pijama/pijama de camiseta de lactancia con detalle de volante de lechuga e impresión de cereza y shorts para maternidad',           category:'bebe',   price:64000, oldPrice:null, badge:null,   emoji:'🍼', img:'imagenes/bebe3.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:49, name:'Moonlight&Mama 3 piezas de sujetadores de maternidad simples y sólidos para mayor comodidad durante la lactancia',           category:'bebe',   price:67000, oldPrice:null, badge:null,   emoji:'🍼', img:'imagenes/bebe4.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+     /* DEPORTIVO */
+     
+    { id:50, name:'Easithlete Mujeres verano mono negro sin costuras con huecos y cinturón tejido con letras impresas en la parte posterior',           category:'deportivo',   price:44000, oldPrice:null, badge:null,   emoji:'🏋️', img:'imagenes/deportivo1.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:51, name:'Easithlete Mono deportivo de mujer con estampado de letras y espalda descubierta para uso diario y actividad física',           category:'deportivo',   price:50000, oldPrice:null, badge:null,   emoji:'🏋️', img:'imagenes/deportivo2.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:52, name:'Sovereign Charm Conjunto deportivo casual de mujer con camiseta de manga corta con estampado de letras, sujetador y pantalones cortos, conjunto versátil de entrenamiento para mujer',           category:'deportivo',   price:75000, oldPrice:null, badge:null,   emoji:'🏋️', img:'imagenes/deportivo3.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+    { id:53, name:'Easithlete Camiseta de tirantes con estampado de espalda cruzada sexy y ajustable, sujetador deportivo',           category:'deportivo',   price:32000, oldPrice:null, badge:null,   emoji:'🏋️', img:'imagenes/deportivo4.jpg', grad:'linear-gradient(145deg,#f5f0ff,#e8deff)' },
+    
+
+  ];
+
+  let wishlist = [];
   let activeFilter = 'todos';
 
-  // Utilidades
   const fmt = n => '$' + n.toLocaleString('es-CO');
 
-  // Cargar datos iniciales
-  async function loadData() {
-    try {
-      const [productsRes, categoriesRes, settingsRes] = await Promise.all([
-        fetch(`${API_URL}/products`).then(r => r.json()),
-        fetch(`${API_URL}/categories`).then(r => r.json()),
-        fetch(`${API_URL}/settings`).then(r => r.json())
-      ]);
-
-      products = productsRes;
-      categories = categoriesRes;
-      settings = settingsRes;
-
-      // Actualizar todo
-      updateSEO();
-      updateHero();
-      updateMarquee();
-      updateCategoriesGrid();
-      updateFooter();
-      updateDesktopNav();
-      updateMobileNav();
-      updateFilterTabs();
-      renderProducts();
-      updateCTA();
-      
-      observeReveal();
-    } catch (error) {
-      console.error('Error cargando datos:', error);
-      showToast('Error al cargar datos del servidor');
-    }
-  }
-
-  // SEO
-  function updateSEO() {
-    document.getElementById('dynamic-title').textContent = settings.siteTitle || 'SOALL — Moda que te define';
-    document.getElementById('dynamic-description').content = settings.metaDescription || 'SOALL - Tienda de moda online. Ropa dama, caballero, accesorios y calzados.';
-  }
-
-  // Hero
-  function updateHero() {
-    document.getElementById('hero-badge').textContent = settings.heroBadge || '✦ Nueva Colección 2026';
-    document.getElementById('hero-title').innerHTML = (settings.heroTitle || 'Moda que<br><em>te define</em>').replace(/\n/g, '<br>');
-    document.getElementById('hero-subtitle').textContent = settings.heroSubtitle || 'Piezas únicas pensadas para cada momento. Estilo, calidad y actitud en cada prenda.';
-    document.getElementById('hero-btn1').innerHTML = (settings.heroBtn1Text || 'Ver Colección') + 
-      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-    document.getElementById('hero-btn1').href = settings.heroBtn1Link || '#categorias';
-    document.getElementById('hero-btn2').textContent = settings.heroBtn2Text || 'Explorar todo';
-    document.getElementById('hero-btn2').href = settings.heroBtn2Link || '#catalogo';
-  }
-
-  // Marquee
-  function updateMarquee() {
-    const items = settings.marqueeItems || [
-      '✦ Envíos a todo el país',
-      '✦ Nuevas llegadas cada semana',
-      '✦ Compra 100% segura',
-      '✦ Atención por WhatsApp',
-      '✦ Devoluciones fáciles'
-    ];
-    const track = document.getElementById('marquee-track');
-    track.innerHTML = items.map(item => `<span class="marquee-item">${item}</span>`).join('') + 
-                      items.map(item => `<span class="marquee-item">${item}</span>`).join('');
-  }
-
-  // Categorías Grid (Bento)
-  function updateCategoriesGrid() {
-    const grid = document.getElementById('categories-grid');
-    const activeCats = categories.filter(c => c.active);
-    
-    // Primera categoría como grande si existe
-    if (activeCats.length > 0) {
-      activeCats[0].isLarge = true;
-    }
-
-    grid.innerHTML = activeCats.map((cat, index) => `
-      <div class="bento-cell ${index === 0 ? 'bento-cell-large' : ''}" onclick="filterCategory('${cat.slug}')"
-           style="background:${cat.gradient}; min-height:${index === 0 ? '180px' : '140px'};">
-        <div class="bento-bg-emoji">${cat.emoji}</div>
-        <div class="bento-overlay">
-          <span class="bento-label">Colección</span>
-          <span class="bento-title">${cat.name}</span>
-        </div>
-        <span class="bento-pill">Explorar →</span>
-      </div>
-    `).join('');
-  }
-
-  // Navegación desktop
-  function updateDesktopNav() {
-    const nav = document.getElementById('desktop-nav');
-    nav.innerHTML = categories.filter(c => c.active).map(cat => 
-      `<a href="#categorias" class="nav-link" onclick="filterCategory('${cat.slug}')">${cat.name}</a>`
-    ).join('');
-  }
-
-  // Navegación móvil
-  function updateMobileNav() {
-    const nav = document.getElementById('mobile-nav-links');
-    nav.innerHTML = categories.filter(c => c.active).map(cat => 
-      `<a href="#categorias" onclick="filterCategory('${cat.slug}'); toggleMobile()">${cat.name}</a>`
-    ).join('');
-  }
-
-  // Filtros de catálogo
-  function updateFilterTabs() {
-    const tabs = document.getElementById('filter-tabs');
-    tabs.innerHTML = `
-      <button class="filter-tab active" onclick="filterCategory('todos')">Todos</button>
-      ${categories.filter(c => c.active).map(cat => 
-        `<button class="filter-tab" onclick="filterCategory('${cat.slug}')">${cat.name}</button>`
-      ).join('')}
-    `;
-  }
-
-  // Productos
-  function renderProducts() {
+  /* RENDER */
+  function renderProducts(filter) {
+    activeFilter = filter || 'todos';
     const grid = document.getElementById('product-grid');
-    const list = activeFilter === 'todos' 
-      ? products.filter(p => p.active)
-      : products.filter(p => p.category?.slug === activeFilter && p.active);
+    const list = activeFilter === 'todos' ? products : products.filter(p => p.category === activeFilter);
 
-    if (list.length === 0) {
-      grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500">No hay productos en esta categoría</div>';
-      return;
-    }
-
-    grid.innerHTML = list.map((p, i) => {
-      const cat = p.category || { name: 'categoría', slug: '' };
-      const gradient = p.gradient || cat.gradient || 'linear-gradient(145deg,#f5f0ff,#e8deff)';
-      
-      return `
+    grid.innerHTML = list.map((p, i) => `
       <div class="product-card reveal d${(i % 4) + 1}">
         <div class="product-img-wrap">
-          ${p.image 
-            ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` 
-            : `<div class="product-img-inner" style="background:${gradient};"> 
-                <span class="prd-emoji">${p.emoji || cat.emoji || '🛍️'}</span> 
-                <span class="prd-cat-label">${cat.name}</span> 
-              </div>`
-          }
+          ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` : `<div class="product-img-inner" style="background:${p.grad};"> <span class="prd-emoji">${p.emoji}</span> <span class="prd-cat-label">${p.category}</span> </div>`}
         
           ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-          <button class="product-wish ${wishlist.includes(p._id) ? 'active' : ''}"
-                  id="wish-${p._id}" onclick="toggleWish('${p._id}')" title="Guardar">
+          <button class="product-wish ${wishlist.includes(p.id) ? 'active' : ''}"
+                  id="wish-${p.id}" onclick="toggleWish(${p.id})" title="Guardar">
             <svg width="14" height="14" viewBox="0 0 24 24"
-                 fill="${wishlist.includes(p._id) ? '#E91E8C' : 'none'}"
-                 stroke="${wishlist.includes(p._id) ? '#E91E8C' : '#888'}"
+                 fill="${wishlist.includes(p.id) ? '#E91E8C' : 'none'}"
+                 stroke="${wishlist.includes(p.id) ? '#E91E8C' : '#888'}"
                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
             </svg>
           </button>
         </div>
         <div class="product-info">
-          <p class="product-cat">${cat.name}</p>
+          <p class="product-cat">${p.category}</p>
           <p class="product-name">${p.name}</p>
           <div class="product-prices">
             <span class="product-price">${fmt(p.price)}</span>
             ${p.oldPrice ? `<span class="product-old">${fmt(p.oldPrice)}</span>` : ''}
           </div>
-          <button class="btn-whatsapp" onclick="buyWA('${p._id}')">
+          <button class="btn-whatsapp" onclick="buyWA(${p.id})">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
             Comprar en WhatsApp
           </button>
         </div>
       </div>
-    `}).join('');
+    `).join('');
 
     observeReveal();
   }
-    // Footer
-  function updateFooter() {
-    document.getElementById('footer-copyright').textContent = settings.footerCopyright || '© 2025 SOALL. Todos los derechos reservados.';
-    document.getElementById('footer-credits').innerHTML = settings.footerCredits || 'Hecho por <span style="color:var(--fucsia);">Jeighost</span> para amantes de la moda';
-    
-    // Redes sociales
-    document.getElementById('social-ig').href = settings.socialInstagram || '#';
-    document.getElementById('social-fb').href = settings.socialFacebook || '#';
-    document.getElementById('social-tk').href = settings.socialTikTok || '#';
-    
-    // Contacto
-    const waNumber = settings.whatsappNumber || '+573012230298';
-    document.getElementById('footer-wa').href = `https://wa.me/${waNumber.replace('+', '')}`;
-    document.getElementById('footer-wa').innerHTML = `📱 WhatsApp: ${waNumber}`;
-    document.getElementById('footer-email').innerHTML = `📧 ${settings.contactEmail || 'sofiafuentes0408@gmail.com'}`;
-    
-    // Categorías en footer
-    const footerCats = document.getElementById('footer-categories');
-    footerCats.innerHTML = categories.filter(c => c.active).map(cat => 
-      `<li><a href="#" onclick="filterCategory('${cat.slug}')">${cat.name}</a></li>`
-    ).join('');
+
+  /* WHATSAPP */
+  function buyWA(id) {
+    const p = products.find(x => x.id === id);
+    const msg = `Hola, me interesa el producto *${p.name}* que vi en la web. ¿Esta disponible?`;
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    showToast('¡Abriendo WhatsApp! 💬');
   }
 
-  // CTA Banner
-  function updateCTA() {
-    document.getElementById('cta-subtitle').textContent = settings.ctaSubtitle || '¿No encontraste lo que buscas?';
-    document.getElementById('cta-title').innerHTML = (settings.ctaTitle || 'Contáctanos directo<br>por WhatsApp').replace(/\n/g, '<br>');
-    document.getElementById('cta-description').textContent = settings.ctaDescription || 'Tenemos más prendas disponibles y te asesoramos con gusto.';
-    document.getElementById('cta-button').innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="#E91E8C"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-      ${settings.ctaButtonText || 'Ir a WhatsApp'}
-    `;
-    document.getElementById('cta-button').href = settings.ctaButtonLink || `https://wa.me/${waNumber.replace('+', '')}`;
-  }
-
-  // Funciones existentes (adaptadas)
+  /* WISHLIST */
   function toggleWish(id) {
     if (wishlist.includes(id)) {
       wishlist = wishlist.filter(x => x !== id);
@@ -962,9 +1136,8 @@
       wishlist.push(id);
       showToast('✦ Agregado a tu lista');
     }
-    localStorage.setItem('soall_wishlist', JSON.stringify(wishlist));
     updateDrawer();
-    renderProducts();
+    renderProducts(activeFilter);
   }
 
   function updateDrawer() {
@@ -990,64 +1163,55 @@
 
     foot.style.display = 'block';
     body.innerHTML = wishlist.map(id => {
-      const p = products.find(x => x._id === id);
-      if (!p) return '';
-      const cat = p.category || {};
+      const p = products.find(x => x.id === id);
       return `<div class="drawer-item">
-        <div class="drawer-item-img" style="background:${p.gradient || cat.gradient || '#f5f5f5'};overflow:hidden;">
-          ${p.image
-            ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">`
-            : `<span style="font-size:1.6rem;">${p.emoji || cat.emoji || '🛍️'}</span>`
+        <div class="drawer-item-img" style="background:${p.grad};overflow:hidden;padding:0;">
+          ${p.img
+            ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">`
+            : `<span style="font-size:1.6rem;">${p.emoji}</span>`
           }
         </div>
         <div style="flex:1;">
           <div class="drawer-item-name">${p.name}</div>
           <div class="drawer-item-price">${fmt(p.price)}</div>
         </div>
-        <button class="drawer-item-remove" onclick="toggleWish('${p._id}')" title="Eliminar">
+        <button class="drawer-item-remove" onclick="toggleWish(${p.id})" title="Eliminar">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
       </div>`;
     }).join('');
 
     const msgList = wishlist.map(id => {
-      const p = products.find(x => x._id === id);
-      return p ? `• ${p.name} (${fmt(p.price)})` : '';
-    }).filter(Boolean).join('\n');
-    const waNumber = settings.whatsappNumber || '+573012230298';
+      const p = products.find(x => x.id === id);
+      return `• ${p.name} (${fmt(p.price)})`;
+    }).join('\n');
     const msg = `Hola! Me interesan los siguientes productos de SOALL:\n${msgList}\n\n¿Están disponibles?`;
-    document.getElementById('drawer-wa-btn').href = `https://wa.me/${waNumber.replace('+', '')}?text=${encodeURIComponent(msg)}`;
+    document.getElementById('drawer-wa-btn').href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
   }
 
+  /* FILTER */
   function filterCategory(cat) {
-    activeFilter = cat;
     document.querySelectorAll('.filter-tab').forEach(t => {
-      t.classList.toggle('active', t.textContent.toLowerCase() === cat || (cat === 'todos' && t.textContent.toLowerCase() === 'todos'));
+      t.classList.toggle('active', t.textContent.toLowerCase() === cat ||
+        (cat === 'todos' && t.textContent.toLowerCase() === 'todos'));
     });
     document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    renderProducts();
+    renderProducts(cat);
   }
 
-  function buyWA(id) {
-    const p = products.find(x => x._id === id);
-    const waNumber = settings.whatsappNumber || '+573012230298';
-    const msg = `Hola, me interesa el producto *${p.name}* que vi en la web. ¿Esta disponible?`;
-    window.open(`https://wa.me/${waNumber.replace('+', '')}?text=${encodeURIComponent(msg)}`, '_blank');
-    showToast('¡Abriendo WhatsApp! 💬');
-  }
-
+  /* DRAWER */
   function openCart() {
     document.getElementById('cart-overlay').classList.add('open');
     document.getElementById('cart-drawer').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-  
   function closeCart() {
     document.getElementById('cart-overlay').classList.remove('open');
     document.getElementById('cart-drawer').classList.remove('open');
     document.body.style.overflow = '';
   }
 
+  /* TOAST */
   let _tt;
   function showToast(msg) {
     const t = document.getElementById('toast');
@@ -1057,10 +1221,12 @@
     _tt = setTimeout(() => t.classList.remove('show'), 2400);
   }
 
+  /* MOBILE MENU */
   function toggleMobile() {
     document.getElementById('mobile-menu').classList.toggle('open');
   }
 
+  /* SCROLL REVEAL */
   function observeReveal() {
     const els = document.querySelectorAll('.reveal:not(.visible)');
     const obs = new IntersectionObserver((entries) => {
@@ -1071,15 +1237,16 @@
     els.forEach(el => obs.observe(el));
   }
 
-  // Scroll header
+  /* HEADER */
   window.addEventListener('scroll', () => {
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // Inicializar
+  /* INIT */
   document.addEventListener('DOMContentLoaded', () => {
-    loadData();
+    renderProducts();
     updateDrawer();
+    observeReveal();
   });
 </script>
 </body>
